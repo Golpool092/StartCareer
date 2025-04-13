@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MillsCome | Начало карьеры программиста</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --dark: #212529;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: transform 0.3s ease;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Основной контент */
+        .content-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+        }
+        
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        /* Стили для кнопок */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 1rem 0.5rem 0 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc, #005580);
+        }
+        
+        .btn-telegram:hover {
+            background: linear-gradient(135deg, #005580, #0088cc);
+        }
+        
+        /* Блоки с советами */
+        .tip-box {
+            background: rgba(67, 97, 238, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background: rgba(247, 37, 133, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .ad-box {
+            background: rgba(248, 249, 250, 0.8);
+            border: 1px dashed #dee2e6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            border-radius: 8px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        
+        /* Таблица сравнения */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .comparison-table th {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-card {
+            animation: fadeIn 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .content-card:nth-child(1) { animation-delay: 0.1s; }
+        .content-card:nth-child(2) { animation-delay: 0.2s; }
+        .content-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="https://golpool092.github.io/main/" class="logo">MillsCome</a>
+            <p class="tagline">Подробное руководство по началу карьеры в программировании</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="content-card">
+            <h1>Как начать карьеру программиста: полное руководство</h1>
+            <p>Программирование — одна из самых востребованных профессий XXI века. Это не только высокие зарплаты и возможность работать удалённо, но и шанс создавать продукты, которые меняют мир. В этом руководстве мы разберём все этапы становления программиста — от выбора языка до первого трудоустройства.</p>
+            
+            <div class="tip-box">
+                <strong>Совет:</strong> Не пытайтесь выучить всё сразу. Лучше глубоко изучить один язык и технологию, чем поверхностно несколько.
+            </div>
+        </div>
+        
+        <div class="content-card">
+            <h2>1. Выбор языка программирования</h2>
+            <p>Первый и самый важный шаг — выбор языка программирования. Ваш выбор должен зависеть от:</p>
+            
+            <ul>
+                <li><strong>Целей:</strong> Что вы хотите создавать (веб-сайты, мобильные приложения, игры, AI)?</li>
+                <li><strong>Рынка труда:</strong> Какие специалисты востребованы в вашем регионе?</li>
+                <li><strong>Сложности:</strong> Некоторые языки проще для новичков.</li>
+            </ul>
+            
+            <div class="ad-box">
+                Тут может быть ваша реклама. <a href="https://t.me/MillsCome" target="_blank">Свяжитесь с нами</a> для размещения.
+            </div>
+            
+            <h3>Популярные языки для начинающих:</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Язык</th>
+                        <th>Сфера применения</th>
+                        <th>Сложность</th>
+                        <th>Средняя зарплата (руб)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Python</td>
+                        <td>Веб, Data Science, AI</td>
+                        <td>Низкая</td>
+                        <td>120,000 - 250,000</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>Веб-разработка</td>
+                        <td>Средняя</td>
+                        <td>100,000 - 220,000</td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td>Корпоративные приложения, Android</td>
+                        <td>Высокая</td>
+                        <td>130,000 - 280,000</td>
+                    </tr>
+                    <tr>
+                        <td>C#</td>
+                        <td>Игры, десктоп приложения</td>
+                        <td>Средняя</td>
+                        <td>110,000 - 240,000</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Для более детального сравнения языков программирования посетите наш <a href="https://golpool092.github.io/program-language/" target="_blank">специальный раздел</a>.</p>
+            
+            <div class="warning-box">
+                <strong>Важно:</strong> Не зацикливайтесь на выборе языка. Основы программирования универсальны. Начав с одного языка, вы сможете легче освоить другие.
+            </div>
+            
+            <a href="https://golpool092.github.io/program-language/" class="btn" target="_blank">Сравнение языков</a>
+            <a href="https://t.me/MillsCome" class="btn btn-telegram" target="_blank">Обсудить в Telegram</a>
+        </div>
+        
+        <div class="content-card">
+            <h2>2. Обучение: с чего начать</h2>
+            <p>Существует несколько способов обучения программированию. Рассмотрим каждый из них:</p>
+            
+            <h3>Бесплатные ресурсы:</h3>
+            <ul>
+                <li><strong>Codecademy</strong> — интерактивные курсы по основам</li>
+                <li><strong>freeCodeCamp</strong> — полноценная программа обучения</li>
+                <li><strong>YouTube-каналы</strong> — Hexlet, Владилен Минин, Гоша Дударь</li>
+                <li><strong>Документация и книги</strong> — "Изучаем Python" Эрика Мэтиза</li>
+            </ul>
+            
+            <h3>Платные курсы:</h3>
+            <ul>
+                <li><strong>Нетология</strong> — полные программы переквалификации</li>
+                <li><strong>Skillbox</strong> — практико-ориентированные курсы</li>
+                <li><strong>Coursera/Stepik</strong> — курсы от ведущих университетов</li>
+            </ul>
+            
+            <div class="tip-box">
+                <strong>Совет:</strong> Сочетайте теорию с практикой. После каждого урока пробуйте применить знания в небольших проектах.
+            </div>
+            
+            <h3>План обучения на первые 3 месяца:</h3>
+            <ol>
+                <li>Неделя 1-2: Основы синтаксиса (переменные, условия, циклы)</li>
+                <li>Неделя 3-4: Функции и структуры данных</li>
+                <li>Неделя 5-6: Работа с файлами и библиотеками</li>
+                <li>Неделя 7-8: Основы ООП (классы и объекты)</li>
+                <li>Неделя 9-12: Первый проект (например, простой сайт или бот)</li>
+            </ol>
+            
+            <a href="https://t.me/MillsCome" class="btn btn-telegram" target="_blank">Получить план в Telegram</a>
+        </div>
+        
+        <div class="content-card">
+            <h2>3. Первые проекты и портфолио</h2>
+            <p>Без практических работ устроиться на работу практически невозможно. Вот какие проекты стоит добавить в портфолио:</p>
+            
+            <h3>Проекты для начинающих:</h3>
+            <ul>
+                <li><strong>Калькулятор</strong> — базовая логика</li>
+                <li><strong>To-Do список</strong> — работа с данными</li>
+                <li><strong>Простейший чат-бот</strong> — взаимодействие с пользователем</li>
+                <li><strong>Сайт-визитка</strong> — основы вёрстки</li>
+                <li><strong>Парсер данных</strong> — работа с API</li>
+            </ul>
+            
+            <div class="ad-box">
+                Тут может быть ваша реклама. <a href="https://t.me/MillsCome" target="_blank">Свяжитесь с нами</a> для размещения.
+            </div>
+            
+            <h3>Где размещать проекты:</h3>
+            <ul>
+                <li><strong>GitHub</strong> — обязательная платформа для любого разработчика</li>
+                <li><strong>GitLab/Bitbucket</strong> — альтернативы GitHub</li>
+                <li><strong>Личный сайт</strong> — демонстрация работ в действии</li>
+            </ul>
+            
+            <div class="warning-box">
+                <strong>Важно:</strong> Качество важнее количества. Лучше 3 хорошо сделанных проекта, чем 10 недоделанных.
+            </div>
+        </div>
+        
+        <div class="content-card">
+            <h2>4. Поиск первой работы</h2>
+            <p>Когда у вас есть базовые знания и несколько проектов, можно начинать искать работу. Варианты для начинающих:</p>
+            
+            <h3>Варианты трудоустройства:</h3>
+            <ul>
+                <li><strong>Стажировки</strong> — многие компании берут стажёров без опыта</li>
+                <li><strong>Фриланс</strong> — небольшие заказы на биржах (Kwork, FL.ru)</li>
+                <li><strong>Удалённая работа</strong> — Junior позиции на hh.ru или LinkedIn</li>
+                <li><strong>Стартапы</strong> — возможность расти вместе с проектом</li>
+            </ul>
+            
+            <h3>Как составить резюме без опыта:</h3>
+            <ol>
+                <li>Укажите все учебные проекты с ссылками на код</li>
+                <li>Перечислите освоенные технологии и инструменты</li>
+                <li>Добавьте не технические навыки (английский, работа в команде)</li>
+                <li>Напишите мотивационное письмо для каждой вакансии</li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>Совет:</strong> Откликайтесь даже на вакансии, где требуют больше знаний, чем у вас есть. Часто компании готовы обучать мотивированных Junior-разработчиков.
+            </div>
+            
+            <a href="https://t.me/MillsCome" class="btn btn-telegram pulse" target="_blank">Вакансии в нашем Telegram</a>
+        </div>
+        
+        <div class="content-card">
+            <h2>5. Развитие и карьерный рост</h2>
+            <p>После получения первой работы важно продолжать развиваться. Основные направления роста:</p>
+            
+            <h3>Технические навыки:</h3>
+            <ul>
+                <li>Изучение смежных технологий (например, базы данных к backend)</li>
+                <li>Освоение методологий разработки (Agile, Scrum)</li>
+                <li>Изучение алгоритмов и структур данных</li>
+                <li>Углубление знаний в выбранном стеке технологий</li>
+            </ul>
+            
+            <h3>Soft skills:</h3>
+            <ul>
+                <li>Работа в команде</li>
+                <li>Коммуникация с заказчиками</li>
+                <li>Тайм-менеджмент</li>
+                <li>Навыки презентации</li>
+            </ul>
+            
+            <div class="warning-box">
+                <strong>Важно:</strong> Не задерживайтесь на Junior позиции более 1.5-2 лет. Если рост в компании невозможен, ищите новые возможности.
+            </div>
+            
+            <h3>Уровни разработчиков и зарплаты:</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Уровень</th>
+                        <th>Опыт</th>
+                        <th>Зарплата (руб)</th>
+                        <th>Обязанности</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Junior</td>
+                        <td>0-1.5 года</td>
+                        <td>60,000 - 120,000</td>
+                        <td>Простые задачи под руководством</td>
+                    </tr>
+                    <tr>
+                        <td>Middle</td>
+                        <td>1.5-3 года</td>
+                        <td>120,000 - 220,000</td>
+                        <td>Самостоятельная реализация модулей</td>
+                    </tr>
+                    <tr>
+                        <td>Senior</td>
+                        <td>3+ года</td>
+                        <td>200,000 - 400,000+</td>
+                        <td>Архитектура, менторство, сложные задачи</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="content-card">
+            <h2>6. Дополнительные советы</h2>
+            
+            <h3>Как не бросить обучение:</h3>
+            <ul>
+                <li>Ставьте конкретные цели (не "выучить Python", а "создать бота за месяц")</li>
+                <li>Найдите сообщество единомышленников (например, наш <a href="https://t.me/MillsCome" target="_blank">Telegram-чат</a>)</li>
+                <li>Разбивайте большие задачи на мелкие этапы</li>
+                <li>Отмечайте прогресс (например, отмечайте пройденные темы в таблице)</li>
+            </ul>
+            
+            <div class="ad-box">
+                Тут может быть ваша реклама. <a href="https://t.me/MillsCome" target="_blank">Свяжитесь с нами</a> для размещения.
+            </div>
+            
+            <h3>Частые ошибки новичков:</h3>
+            <ol>
+                <li>Попытка изучить несколько языков одновременно</li>
+                <li>Чтение без практики ("паралич анализа")</li>
+                <li>Сравнение себя с опытными разработчиками</li>
+                <li>Отсутствие системы в обучении</li>
+                <li>Страх задавать вопросы и просить помощи</li>
+            </ol>
+            
+            <div class="tip-box">
+                <strong>Финалный совет:</strong> Программирование — это марафон, а не спринт. Уделяйте обучению регулярное время (лучше по 1 часу ежедневно, чем 7 часов раз в неделю).
+            </div>
+            
+            <a href="https://golpool092.github.io/main/" class="btn btn-outline">На главную</a>
+            <a href="https://t.me/MillsCome" class="btn btn-telegram" target="_blank">Задать вопрос в Telegram</a>
+        </div>
+    </div>
+    
+    <footer style="text-align: center; padding: 2rem; color: var(--dark); font-size: 0.9rem; margin-top: 2rem;">
+        <p>© 2024 MillsCome. Все права защищены. <a href="https://t.me/MillsCome" style="color: var(--primary);" target="_blank">Наш Telegram-канал</a></p>
+    </footer>
+    
+    <script>
+        // Анимация при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.content-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Анимация логотипа
+            const logo = document.querySelector('.logo');
+            setTimeout(() => {
+                logo.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    logo.style.transform = 'scale(1)';
+                }, 300);
+            }, 1000);
+            
+            // Плавное появление элементов при скролле
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.content-card, h2, h3, .tip-box, .warning-box');
+                
+                elements.forEach(el => {
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Инициализация при загрузке
+            
+            // Подсветка ссылок при наведении
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    link.style.transition = 'all 0.2s ease';
+                    link.style.color = 'var(--accent)';
+                });
+                
+                link.addEventListener('mouseleave', () => {
+                    link.style.color = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
